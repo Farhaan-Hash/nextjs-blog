@@ -10,9 +10,12 @@ export const metadata = {
 };
 
 async function getData() {
-  const res = await fetch("https://nextjs-blog.vercel.app/api/posts", {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    "https://nextjs-blog-nu-neon-50.vercel.app/api/posts",
+    {
+      cache: "no-store",
+    }
+  );
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
