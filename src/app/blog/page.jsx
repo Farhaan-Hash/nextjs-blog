@@ -10,7 +10,7 @@ export const metadata = {
 };
 
 async function getData() {
-  const res = await fetch("http://127.0.0.1:3000/api/posts", {
+  const res = await fetch(`${process.env.API_URL}/api/posts`, {
     cache: "no-store",
   });
 
