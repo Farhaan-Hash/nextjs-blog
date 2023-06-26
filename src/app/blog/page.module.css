@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.content {
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.desc {
+  font-size: 18px;
+  color: #999;
+}
+
+@media screen and (min-width: 400px) {
+  .container {
+    max-width: 400px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .desc {
+    font-size: 24px;
+  }
+}
