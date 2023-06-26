@@ -2,17 +2,23 @@ import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import {notFound} from "next/navigation";
+import connect from "@/utils/db";
+import Post from "@/models/Post";
+import {NextResponse} from "next/server";
 
 async function getData(id) {
-  const res = await fetch(`${process.env.API_URL}/api/posts/${id}`, {
-    cache: "no-store",
-  });
+  try {
+    await connect();
+    const post = await Post.findById(id);
 
-  if (!res.ok) {
-    return notFound();
+    if (!post) {
+      return notFound();
+    }
+
+    return post;
+  } catch (error) {
+    return new NextResponse("Database Error", {status: 500});
   }
-
-  return res.json();
 }
 // META DATA
 export async function generateMetadata({params}) {
@@ -22,7 +28,7 @@ export async function generateMetadata({params}) {
     description: post.desc,
   };
 }
-const BlogPost = async ({params}) => {
+export default async function BlogPost({params}) {
   const data = await getData(params.id);
   return (
     <div className={styles.container}>
@@ -50,6 +56,4 @@ const BlogPost = async ({params}) => {
       </div>
     </div>
   );
-};
-
-export default BlogPost;
+}

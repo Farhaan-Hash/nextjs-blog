@@ -2,7 +2,9 @@ import React from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
-// import img from "/public/bg.png";
+import connect from "@/utils/db";
+import Post from "@/models/Post";
+import {NextResponse} from "next/server";
 
 export const metadata = {
   title: "Blog Page",
@@ -10,15 +12,14 @@ export const metadata = {
 };
 
 async function getData() {
-  const res = await fetch(`${process.env.API_URL}/api/posts`, {
-    cache: "no-store",
-  });
+  try {
+    await connect();
+    const posts = await Post.find({});
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    return posts;
+  } catch (error) {
+    return new NextResponse("Database Error", {status: 500});
   }
-
-  return res.json();
 }
 const Blog = async () => {
   const data = await getData();
