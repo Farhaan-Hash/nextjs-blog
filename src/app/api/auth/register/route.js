@@ -1,4 +1,3 @@
-import Error from "@/components/Error/Error";
 import User from "@/models/User";
 import connect from "@/utils/db";
 import bcrypt from "bcryptjs";

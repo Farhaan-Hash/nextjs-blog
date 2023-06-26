@@ -7,10 +7,10 @@ import {useRouter} from "next/navigation";
 import Image from "next/image";
 import Loader from "@/components/Loading/Loader";
 
-export const metadata = {
-  title: "Dashboard Page",
-  description: "",
-};
+// export const metadata = {
+//   title: "Dashboard Page",
+//   description: "",
+// };
 const Dashboard = () => {
   // Protecting the routes
   const session = useSession();

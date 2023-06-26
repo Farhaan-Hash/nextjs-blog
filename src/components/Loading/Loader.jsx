@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import imm from "/public/l1.gif";
-import styles from "./Loader.module.css";
+import styles from "./loader.module.css";
 
 const Loader = () => {
   return (
